@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tashqi savdo dashboard</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="page-head">
+      <div>
+        <h1 data-i18n="title">O'zbekiston tashqi savdosi</h1>
+        <p class="sub" id="subtitle"></p>
+      </div>
+      <div class="lang" role="group" aria-label="Til">
+        <button type="button" data-lang="uz">UZ</button>
+        <button type="button" data-lang="ru">RU</button>
+      </div>
+    </header>
+
+    <section class="filters" aria-label="Filtrlar">
+      <div class="field">
+        <span class="label" data-i18n="mode">Rejim</span>
+        <div class="segmented" role="group" id="modeGroup">
+          <button type="button" data-mode="export" data-i18n="export">Eksport</button>
+          <button type="button" data-mode="import" data-i18n="import">Import</button>
+        </div>
+      </div>
+      <label class="field">
+        <span class="label" data-i18n="year">Yil</span>
+        <select id="yearSel"></select>
+      </label>
+      <label class="field">
+        <span class="label" data-i18n="month">Oy</span>
+        <select id="monthSel"></select>
+      </label>
+      <label class="field field-wide">
+        <span class="label" data-i18n="country">Mamlakat</span>
+        <select id="countrySel"></select>
+      </label>
+      <button type="button" class="reset" id="resetBtn" data-i18n="reset">Tozalash</button>
+    </section>
+
+    <p class="period-line" id="periodLine"></p>
+
+    <section class="kpis" id="kpis" aria-live="polite"></section>
+
+    <section class="grid two">
+      <article class="card">
+        <h2 id="monthlyTitle"></h2>
+        <p class="hint" id="monthlyHint"></p>
+        <div class="chart-box"><canvas id="monthlyChart"></canvas></div>
+      </article>
+      <article class="card">
+        <h2 id="yearlyTitle"></h2>
+        <p class="hint" id="yearlyHint"></p>
+        <div class="chart-box"><canvas id="yearlyChart"></canvas></div>
+      </article>
+    </section>
+
+    <section class="grid two">
+      <article class="card">
+        <h2 id="topTitle"></h2>
+        <p class="hint" id="topHint"></p>
+        <div class="chart-box tall"><canvas id="topChart"></canvas></div>
+      </article>
+      <article class="card">
+        <div class="table-head">
+          <h2 id="tableTitle"></h2>
+          <input type="search" id="tableSearch" autocomplete="off">
+        </div>
+        <div class="table-wrap">
+          <table id="countryTable">
+            <thead><tr></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <footer class="notes" id="notes"></footer>
+  </div>
+
+  <script src="vendor/chart.umd.min.js"></script>
+  <script src="data/data.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
